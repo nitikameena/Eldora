@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldora Web OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== TOP CONTROL BAR ===== -->
+    <header class="topbar">
+        <img src="Images/Profile.png" alt="User Profile" class="profile">
+
+        <!-- Search apps -->
+        <input 
+            type="text" 
+            id="searchBar" 
+            placeholder="Search apps..." 
+            onkeyup="searchApps()"
+        >
+
+        <!-- Change wallpaper -->
+        <button onclick="changeWallpaper()">Change Wallpaper</button>
+    </header>
+
+
+    <!-- ===== MAIN DESKTOP ===== -->
+    <main class="desktop">
+
+        <!-- Left side: App shortcuts -->
+        <aside class="sidebar">
+            <button onclick="openApp('files')">📁</button>
+            <button onclick="openApp('notes')">📝</button>
+            <button onclick="openApp('gallery')">📷</button>
+            <button onclick="openApp('todo')">📋</button>
+        </aside>
+
+
+        <!-- Center workspace -->
+        <section class="workspace">
+            <h2>Welcome to Eldora</h2>
+        </section>
+
+
+        <!-- Right side panel -->
+        <aside class="right-panel">
+
+            <!-- To-Do widget -->
+            <div class="todo-widget">
+                <h3>To-Do</h3>
+
+                <input 
+                    id="taskInput" 
+                    type="text" 
+                    placeholder="What do you need to do?"
+                >
+                <button onclick="addTask()">Add</button>
+
+                <ul id="taskList"></ul>
+            </div>
+
+
+            <!-- Gallery widget -->
+            <div class="gallery-widget">
+                <h3>Gallery</h3>
+
+                <input type="file" id="imageInput">
+                <button onclick="uploadImage()">Upload</button>
+
+                <div id="galleryContainer"></div>
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- ===== TASKBAR ===== -->
+    <footer class="taskbar">
+
+        <!-- Open apps -->
+        <div id="openApps"></div>
+
+        <!-- Time + Date -->
+        <div class="clock">
+            <span id="time"></span>
+            <span id="date"></span>
+        </div>
+
+    </footer>
+
+
+    <!-- ===== START MENU ===== -->
+    <div id="startMenu" class="start-menu">
+        <p onclick="openApp('notes')">📝 Notes</p>
+        <p onclick="openApp('gallery')">📷 Gallery</p>
+        <p onclick="openApp('todo')">📋 To-Do</p>
+        <p onclick="openApp('files')">📁 Files</p>
+    </div>
+
+
+    <!-- ===== APP WINDOWS ===== -->
+
+    <!-- Notes -->
+    <div id="notes" class="app-window">
+        <div class="window-header">
+            <span>📝 Notes</span>
+            <button onclick="closeApp('notes')">✖</button>
+        </div>
+
+        <textarea placeholder="Write something..."></textarea>
+        <button onclick="saveNote()">Save</button>
+    </div>
+
+
+    <!-- Gallery -->
+    <div id="gallery" class="app-window">
+        <div class="window-header">
+            <span>📷 Gallery</span>
+            <button onclick="closeApp('gallery')">✖</button>
+        </div>
+
+        <p>Your uploaded images will appear here.</p>
+    </div>
+
+
+    <!-- Files -->
+    <div id="files" class="app-window">
+        <div class="window-header">
+            <span>📁 Files</span>
+            <button onclick="closeApp('files')">✖</button>
+        </div>
+
+        <ul id="fileList"></ul>
+    </div>
+
+
+    <!-- To-Do -->
+    <div id="todo" class="app-window">
+        <div class="window-header">
+            <span>📋 To-Do</span>
+            <button onclick="closeApp('todo')">✖</button>
+        </div>
+
+        <p>Manage your tasks here.</p>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
